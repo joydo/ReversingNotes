@@ -1,4 +1,4 @@
-Binary Reversing Engineering Knowledge(Public) - By DongJie
+Binary Reversing Engineering Summary - By Joy
 ===
 
 # Basics
