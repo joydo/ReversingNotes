@@ -1,4 +1,4 @@
-Binary Reversing Engineering Summary - By Joy
+Binary Reversing Engineering Summary
 ===
 
 # Basics
@@ -163,7 +163,7 @@ Binary Reversing Engineering Summary - By Joy
 
   * Android ART分析
 
-  ​	==ART==![](E:\jdong_reversing_\Android_ART_Internal.jpg)
+  ​	==ART==![](https://github.com/joydo/ReversingNotes/blob/main/secretpdfs/Android_ART_Internal.jpg)
 
   * https://www.blackhat.com/docs/asia-15/materials/asia-15-Sabanal-Hiding-Behind-ART-wp.pdf
   * http://newandroidbook.com/files/ArtOfDalvik.pdf
