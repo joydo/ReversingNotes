@@ -197,7 +197,7 @@ Binary Reversing Engineering Summary
 
 #### 调试相关
 
-==备注==：新版本Android在逆向过程中，大多数情况下调试主程序比较困难，即使借助IDA或 Smali字节码调试也不是很理想，因此大多数情况下会选择Hooking或者tracing处理与分析相关逻辑
+***备注：新版本Android在逆向过程中，大多数情况下调试主程序比较困难，即使借助IDA或 Smali字节码调试也不是很理想，因此大多数情况下会选择Hooking或者tracing处理与分析相关逻辑***
 
 
 
@@ -274,7 +274,7 @@ Binary Reversing Engineering Summary
   * 如何绕过IOS代码签名(内容有点老，谨慎参考)(http://www.saurik.com/id/8)
   * dyld detailed 内部分析(http://www.newosxbook.com/articles/CodeSigning.pdf)
 
-* **==IOS Jailbreak 百科全书==**(https://www.theiphonewiki.com/wiki/Jailbreak)
+* ***IOS Jailbreak 百科全书***(https://www.theiphonewiki.com/wiki/Jailbreak)
 
 * 简易版Swift逆向入门指南(由于Swift的ABI这几年一直在更迭，因此仅作为参考，需要结合sourcecode重点分析)(https://github.com/iOS-Reverse-Engineering-Dev/Swift-Apps-Reverse-Engineering/blob/master/Reverse%20Engineering%20Swift%20Applications.pdf)
 
