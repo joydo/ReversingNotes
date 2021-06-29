@@ -1,3 +1,4 @@
+
 Binary Reversing Engineering Summary
 ===
 
@@ -173,6 +174,9 @@ Binary Reversing Engineering Summary
   * 腾讯乐固加壳分析(https://github.com/quarkslab/legu_unpacker_2019)
   * Android App加固原理与技术历程入门级介绍(https://bbs.pediy.com/thread-260124.htm)
   * 常见App加固厂商脱壳方法分析(部分信息比较老了，谨慎参考)(https://github.com/JnuSimba/AndroidSecNotes/blob/master/Android%20%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/%E5%B8%B8%E8%A7%81app%E5%8A%A0%E5%9B%BA%E5%8E%82%E5%95%86%E8%84%B1%E5%A3%B3%E6%96%B9%E6%B3%95.md)  
+  * 针对各大厂商一代壳的处理与破壳，二代壳研究分析开源项目(BlackDex)(https://github.com/CodingGay/BlackDex)
+    备注: 可以将这个与VirtualApp泄露版结合一起看看(Android App loading流程一定要搞懂,最好是有点Android正向开发经验)
+         VirtualApp项目地址(https://github.com/2-young-2-simple/VirtualApp)
 
 ### 工具使用
 
@@ -500,7 +504,7 @@ Linux能说的东西暂时不多，目前围绕的就是调试与符号分析，
 >   * 维基百科给出的解释(https://en.wikipedia.org/wiki/Symbolic_execution)
 >   * SAT_SMT By Examples(https://sat-smt.codes/)
 
-***Toosets:***
+***Toolsets:***
 
 > * angr(https://github.com/angr/angr)
 > * miasm(https://github.com/cea-sec/miasm/)
@@ -526,45 +530,50 @@ Linux能说的东西暂时不多，目前围绕的就是调试与符号分析，
 > * Tigress-Protection(Tigress binary protection)(https://github.com/JonathanSalwan/Tigress_protection)
 
 > 对抗混淆历史:
+
+ 关于反编译的研究分析(主要基于开源项目):
+ 说明: 目前分析市面上的反编译工具(RetDec,Ghidra,IDA),结果显示IDA效果是最好的，IDA 7.2后面引入
+ microcode机制，相较于之前的基于CTree机制的反编译，效果更加，而且对抗混淆效果最好，由于现有
+ 市面的混淆代码越来越多(抖音，SnapChat(ollvm作者目前就职于该公司))(主要是基于LLVM IR的混淆较多)(开源框架:OLLVM,Hikari，基于二者的魔改等)，给逆向与安全研究员带来不少
+ 的困扰，因此有必要对相关反混淆机制进行研究，先将业界的目前的研究成功共享一下，有心学习编译器
+ 相关以及IR相关的同学可以参考学习(难度较高)
+ 
+ IDA microcode 使用分析
+    IDA 创始人关于microcode的介绍:  	    
+    https://recon.cx/2018/brussels/resources/slides/RECON-BRX-2018-Decompiler-internals-microcode.pdf
+     
+     * 2018年: 
+        作者:Rolf Rolles(使用microcode首次对抗基于LLVM混淆)
+        Blog:https://www.hex-rays.com/blog/hex-rays-microcode-api-vs-obfuscating-compiler/
+        开源的插件地址：https://github.com/RolfRolles/HexRaysDeob(C++版本)
+      	因为是基于ida7.2的，因此需要逆向的版本ida反编译插件(见以下)
+     
+     * 2019年:
+        作者:chrisps ida7.0 microcode的逆向版本(C++版本)，与作者沟通过几次，详情参见GitHub issues内容，这个版本目前正是我们使用的版本，可以用这个版本编译上面的插件
+      	开源地址:https://github.com/chrisps/Hexext
+ 	       作者: Nadège Duval分享的microcode内部机制
+  	       Blog: https://blog.amossys.fr/stage-2019-hexraysmicrocode.html
+  		         
+    * 2020年：
+        作者:ESET(研究机构)分享新型挖矿病毒遇到的混淆分析	Blog:https://www.welivesecurity.com/2020/03/19/stantinko-new-cryptominer-unique-obfuscation-techniques/
+      	开源地址：https://github.com/eset/stadeo(基于python与miasm框架)
+      	缺点:没有相关的sample，看代码实现有点点费劲
+      	作者:gaasedelen 2020年IDA contest获奖插件，基于ida7.2以上版本的microcode可视化分析
+      	开源地址:https://github.com/gaasedelen/lucid
+     	作者:eShard(研究机构)分享的可扩展式microcode插件(基于python接口)
+        blog:https://eshard.com/posts/d810_blog_post_1/
+     	开源地址：https://gitlab.com/eshard/d810
+       	该版本有相关sample可供分析:https://gitlab.com/eshard/d810_samples
+       	国内情况:	    
+       	   目前的分析结论只是针对特定的混淆方案，如果多重分析方案共同起作用，国内目前开源的方案效果不明显
+  TODO:
 >
-> 关于反编译的研究分析(主要基于开源项目):
-> 说明: 目前分析市面上的反编译工具(RetDec,Ghidra,IDA),结果显示IDA效果是最好的，IDA 7.2后面引入
-> microcode机制，相较于之前的基于CTree机制的反编译，效果更加，而且对抗混淆效果最好，由于现有
-> 市面的混淆代码越来越多(抖音，SnapChat(ollvm作者目前就职于该公司))(主要是基于LLVM IR的混淆较多)(开源框架:OLLVM,Hikari，基于二者的魔改等)，给逆向与安全研究员带来不少
-> 的困扰，因此有必要对相关反混淆机制进行研究，先将业界的目前的研究成功共享一下，有心学习编译器
-> 相关以及IR相关的同学可以参考学习(难度较高)
-> 1) IDA microcode 使用分析
->    IDA 创始人关于microcode的介绍:  	    
->
-> ​	https://recon.cx/2018/brussels/resources/slides/RECON-BRX-2018-Decompiler-internals-microcode.pdf
->    2018年: 
-> ​        作者:Rolf Rolles(使用microcode首次对抗基于LLVM混淆)
-> ​		Blog:https://www.hex-rays.com/blog/hex-rays-microcode-api-vs-obfuscating-compiler/
-> ​        开源的插件地址：https://github.com/RolfRolles/HexRaysDeob(C++版本)
-> ​		因为是基于ida7.2的，因此需要逆向的版本ida反编译插件(见以下)
->    2019年:
-> ​        作者:chrisps ida7.0 microcode的逆向版本(C++版本)，与作者沟通过几次，详情参见GitHub issues内容，这个版本目前正是我们使用的版本，可以用这个版本编译上面的插件
-> ​		开源地址:https://github.com/chrisps/Hexext
-> ​	    作者: Nadège Duval分享的microcode内部机制
-> ​		Blog: https://blog.amossys.fr/stage-2019-hexraysmicrocode.html
->    2020年：
-> ​		作者:ESET(研究机构)分享新型挖矿病毒遇到的混淆分析	Blog:https://www.welivesecurity.com/2020/03/19/stantinko-new-cryptominer-unique-obfuscation-techniques/
-> ​		开源地址：https://github.com/eset/stadeo(基于python与miasm框架)
-> ​		缺点:没有相关的sample，看代码实现有点点费劲
-> ​		作者:gaasedelen 2020年IDA contest获奖插件，基于ida7.2以上版本的microcode可视化分析
-> ​		开源地址:https://github.com/gaasedelen/lucid
-> ​		作者:eShard(研究机构)分享的可扩展式microcode插件(基于python接口)
-> ​		blog:https://eshard.com/posts/d810_blog_post_1/
-> ​		开源地址：https://gitlab.com/eshard/d810
-> ​		该版本有相关sample可供分析:https://gitlab.com/eshard/d810_samples
-> ​	国内情况:	    目前的分析结论只是针对特定的混淆方案，如果多重分析方案共同起作用，国内目前开源的方案效果不明显
-> TODO:
->
->  * ida 7.0逆向的microcode需要convert to python接口版本
+>    * ida 7.0逆向的microcode需要convert to python接口版本
 >    * ida 7.0逆向版本的接口亟待继续分析+优化(公司买不起正版的ida后果)
 >    * z3 符号执行继续深入分析
 >    * 布尔-算术bit级运算分析
 >    * LLVM IR 深入分析
+>    
 
 > 对抗混淆Toolsets(**只能作为思路分析，具体的还是要具体分析，不能生搬硬套**):
 >
