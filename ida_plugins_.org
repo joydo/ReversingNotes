@@ -1,0 +1,32 @@
+#+TITLE: IDA Plugins
+#+TITLE: Private Collections
+
+* ida plugins
+** HexSuite(header only wrapper around Hex-Rays API in C++20)
+  https://github.com/can1357/HexSuite
+
+** tenet(A Trace Explorer for Reverse Engineers)
+  https://github.com/gaasedelen/tenet
+
+** ida-strikeout(IDA strike-out: A Hex-Rays decompiler plugin to patch the Ctree)
+   https://github.com/0xeb/ida-strikeout
+
+** diaphora(the most advanced Free and Open Source program diffing tool)
+   https://github.com/joxeankoret/diaphora
+** HexRaysDeob
+   https://github.com/carbonblack/HexRaysDeob
+** HexRaysCodeXplorer(Hex-Rays Decompiler plugin for better code navigation)
+   https://github.com/REhints/HexRaysCodeXplorer
+* other debugger plugins
+** gdb
+*** decomp2gef(A plugin to introduce a generic API for Decompiler support in GEF)
+    https://github.com/mahaloz/decomp2gef
+
+* Some Other modules for helping Reverse Project
+** QBDL(QuarkslaB Dynamic Linker library)
+   https://github.com/quarkslab/QBDL
+** TinyInst(A lightweight dynamic instrumentation library)
+   https://github.com/googleprojectzero/TinyInst
+** Jackalope(Binary, coverage-guided fuzzer for Windows and macOS)
+   https://github.com/googleprojectzero/Jackalope
+**
